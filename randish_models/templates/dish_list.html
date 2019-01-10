@@ -1,0 +1,157 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Randish</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+
+        body {
+            background: url(../../static/image/background.png);
+            font-family: Tahoma, Geneva, sans-serif;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+
+        .wrapper {
+            width: 1400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+
+        h1 {
+          font-size: 32px;
+        }
+
+        .image {
+            width: 800px;
+            height: 550px;
+            margin: 0 auto 40px auto;
+            text-align: left;;
+            background-image: url('../../{{ dish_id.image }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            box-shadow: inset 180px 0 0 0 rgba(0,0,0,0.6);
+        }
+
+        .image p {
+          padding: 40px 0 0 40px;
+          text-decoration: underline;
+        }
+
+
+        ul {
+          list-style-type:none;
+
+        }
+
+        #reload_button {
+             background: tomato;
+             color: white;
+             padding: 15px 32px;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 16px;
+             box-shadow: 0px 0px 10px 0px rgba(0,0,0,.3);
+        }
+
+        #reload_button:active {
+            <!--padding: 14px 31px;-->
+            box-shadow: 0px 0px 11px 0px rgba(0,0,0,.3);
+            transform: translateY(1px);
+            font-size: 98%;
+        }
+
+    </style>
+
+</head>
+<body>
+
+{% block content %}
+
+<div class="wrapper">
+
+    <h1>{{ dish_id.dish_name }}</h1>
+    <hspan>({{ dish_id.dish_type }})</hspan>
+
+        <div class="image">
+            <p>Ингредиенты:</p>
+            <ul>
+            {%for ingr in ingr_by_dish %}
+                <li>{{ ingr.ingredient_name }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+    <a href="reload" id="reload_button">Случайное блюдо</a>
+</div>
+
+
+
+
+<div class="test">
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+
+$('#reload_button').on('click', function(e){
+			e.preventDefault();
+			$.ajax({
+				method: 'Get',
+				url: $(this).attr('href'),
+				data: "",
+				dataType: 'json',
+				success: function(data){
+
+                console.log(data);
+
+                $('.wrapper ul').html("");
+
+                var h1 = "<h1>" + data.daily_dishes[0].dish_name + "</h1>";
+                var h2 = "<h4>(" + data.daily_dishes[0].dish_type + ")</h4>";
+
+                var image = "url('../../" + data.daily_dishes[0].image + "')";
+
+                 for(var i = 0; i < data.ingr_by_dish.length; i++) {
+                    var li = "<li>" + data.ingr_by_dish[i].ingredient_name + "</li>";
+
+                    $('.wrapper ul').append(li);
+                 }
+
+
+
+
+
+
+
+                $('.wrapper h1').html(h1);
+                $('.wrapper h4').html(h2);
+                $('.wrapper .image').css("background-image", image);
+
+            }
+        })
+});
+
+})
+
+
+</script>
+
+
+
+
+
+
+{% endblock %}
+
+</body>
+</html>
