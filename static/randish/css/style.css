@@ -1,0 +1,60 @@
+        body {
+            background: url(../image/background.png);
+
+
+            font-family: Tahoma, Geneva, sans-serif;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ccc;
+        }
+
+
+        .wrapper {
+            width: 1400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+
+        h1 {
+          font-size: 32px;
+        }
+
+        .image {
+            width: 800px;
+            height: 550px;
+            margin: 0 auto 40px auto;
+            text-align: left;;
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            box-shadow: inset 180px 0 0 0 rgba(0,0,0,0.6);
+        }
+
+        .image p {
+          padding: 40px 0 0 40px;
+          text-decoration: underline;
+        }
+
+
+        ul {
+          list-style-type:none;
+
+        }
+
+        #reload_button {
+             background: tomato;
+             color: white;
+             padding: 15px 32px;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 16px;
+             box-shadow: 0px 0px 10px 0px rgba(0,0,0,.3);
+        }
+
+        #reload_button:active {
+            <!--padding: 14px 31px;-->
+            box-shadow: 0px 0px 11px 0px rgba(0,0,0,.3);
+            transform: translateY(1px);
+            font-size: 98%;
+        }

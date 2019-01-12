@@ -35,7 +35,7 @@ class DishModel(models.Model):
 
     dish_name = models.CharField(max_length=50, verbose_name = "Название") #Name
     dish_type = models.CharField(max_length=50, choices=TYPE_CHOICE, verbose_name = "Тип блюда") #Type
-    image = models.ImageField(upload_to='static/image', verbose_name = "Картинка")
+    image = models.ImageField(upload_to='static/randish/image', verbose_name = "Картинка")
     ingredients = models.ManyToManyField(Ingredients, verbose_name = "Ингредиенты")
 
     def __str__(self):

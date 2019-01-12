@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,68 +7,8 @@
     <title>Randish</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <style>
+    <link rel="stylesheet" href="{% static 'randish/css/style.css'%}">
 
-        body {
-            background: url(../../static/image/background.png);
-            font-family: Tahoma, Geneva, sans-serif;
-            background-size: cover;
-            background-attachment: fixed;
-            color: #fff;
-        }
-
-
-        .wrapper {
-            width: 1400px;
-            margin: 100px auto;
-            text-align: center;
-        }
-
-
-        h1 {
-          font-size: 32px;
-        }
-
-        .image {
-            width: 800px;
-            height: 550px;
-            margin: 0 auto 40px auto;
-            text-align: left;;
-            background-image: url('../../{{ dish_id.image }}');
-            background-size: cover;
-            background-repeat: no-repeat;
-            box-shadow: inset 180px 0 0 0 rgba(0,0,0,0.6);
-        }
-
-        .image p {
-          padding: 40px 0 0 40px;
-          text-decoration: underline;
-        }
-
-
-        ul {
-          list-style-type:none;
-
-        }
-
-        #reload_button {
-             background: tomato;
-             color: white;
-             padding: 15px 32px;
-             text-decoration: none;
-             display: inline-block;
-             font-size: 16px;
-             box-shadow: 0px 0px 10px 0px rgba(0,0,0,.3);
-        }
-
-        #reload_button:active {
-            <!--padding: 14px 31px;-->
-            box-shadow: 0px 0px 11px 0px rgba(0,0,0,.3);
-            transform: translateY(1px);
-            font-size: 98%;
-        }
-
-    </style>
 
 </head>
 <body>
@@ -77,10 +17,11 @@
 
 <div class="wrapper">
 
-    <h1>{{ dish_id.dish_name }}</h1>
-    <hspan>({{ dish_id.dish_type }})</hspan>
 
-        <div class="image">
+    <h1>{{ dish_id.dish_name }}</h1>
+    <h4>({{ dish_id.dish_type }})</h4>
+
+        <div class="image" style="background-image: url(../../{{ dish_id.image }});">
             <p>Ингредиенты:</p>
             <ul>
             {%for ingr in ingr_by_dish %}
@@ -117,9 +58,11 @@ $('#reload_button').on('click', function(e){
                 $('.wrapper ul').html("");
 
                 var h1 = "<h1>" + data.daily_dishes[0].dish_name + "</h1>";
-                var h2 = "<h4>(" + data.daily_dishes[0].dish_type + ")</h4>";
+                var h4 = "<h4>(" + data.daily_dishes[0].dish_type + ")</h4>";
 
                 var image = "url('../../" + data.daily_dishes[0].image + "')";
+
+                console.log(image);
 
                  for(var i = 0; i < data.ingr_by_dish.length; i++) {
                     var li = "<li>" + data.ingr_by_dish[i].ingredient_name + "</li>";
@@ -134,7 +77,7 @@ $('#reload_button').on('click', function(e){
 
 
                 $('.wrapper h1').html(h1);
-                $('.wrapper h4').html(h2);
+                $('.wrapper h4').html(h4);
                 $('.wrapper .image').css("background-image", image);
 
             }
