@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+
+
+<h3>Add Ingredients</h3>
+
+<form action="add-ingredients/" method="post" enctype="multipart/form-data" id="add-ingr-html-form">{% csrf_token %}
+    {{ form_for_ingredients.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+<h3>Add Dish</h3>
+
+<form action="add-dish/" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form_for_dish.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

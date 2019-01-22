@@ -5,6 +5,7 @@ from .models import DishModel
 from .models import Ingredients
 import random
 from django.http import JsonResponse
+# from . import forms
 
 # Create your views here.
 
@@ -55,3 +56,27 @@ def reload(request):
     }
 
     return JsonResponse(context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
