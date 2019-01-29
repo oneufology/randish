@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'randish_models',
     'form',
+    'filtered_list',
 ]
 
 MIDDLEWARE = [

@@ -10,7 +10,7 @@ from django.http import JsonResponse
 # Create your views here.
 
 class List(TemplateView):
-    template_name = 'dish_list.html'
+    template_name = 'Index.html'
 
     def get(self, request):
         all_dishes = DishModel.objects.all()

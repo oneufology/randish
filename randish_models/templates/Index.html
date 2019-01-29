@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Randish{% endblock %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'randish/css/style.css'%}">
+
+
+</head>
+<body>
+<header>
+    <a href="../"><h1 class="logo">LOGO</h1></a>
+    <nav>
+        <a href="../add/">add |</a>
+        <a href="../filtered-list/">Show List |</a>
+    </nav>
+
+</header>
+
+
+
+
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="image" style="background-image: url(../../{{ dish_id.image }});">
+        <div class="image-inner">
+            <h1>{{ dish_id.dish_name }}</h1>
+            <h4>({{ dish_id.dish_type }})</h4>
+                    <p>Ингредиенты:</p>
+            <ul>
+            {%for ingr in ingr_by_dish %}
+                <li>{{ ingr.ingredient_name }}</li>
+            {% endfor %}
+            </ul>
+
+            <a href="reload" id="reload_button">Случайное блюдо</a>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+<footer>
+    <h1>Footer</h1>
+</footer>
+
+
+
+
+<script src="{% static 'randish/js/script.js'%}" ></script>
+
+</body>
+</html>

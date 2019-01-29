@@ -1,14 +1,9 @@
-{% load static %}
+{% extends 'Index.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Form</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
+{% block title %} Add {% endblock %}
 
+
+{% block content %}
 
 {% if messages %}
     {% for message in messages %}
@@ -34,16 +29,7 @@
 
 
 
-
-
-</script>
-
+{% endblock %}
 
 
 
-
-
-
-
-</body>
-</html>

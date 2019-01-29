@@ -21,8 +21,7 @@ def form(request):
 
 def add_ingredients(request):
     form = forms.IngredientsForm(request.POST)
-    messages.success(request, 'Changes successfully saved.')
-    result = "Ингредиенты добавлены %s" %request.path
+    messages.success(request, 'Ингредиент добавлен')
     if request.method == "POST":
         if form.is_valid():
             data = form.cleaned_data
@@ -35,18 +34,15 @@ def add_ingredients(request):
 
 
 def add_dish(request):
+    messages.success(request, 'Блюдо добавлено')
+    form = forms.DishModelForm(request.POST, request.FILES)
     if request.method == 'POST':
-        form = forms.DishModelForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('../')
 
 
 
-def test(request):
-    if request.method == 'POST':
-        form = forms.DishModelForm(request.POST, request.FILES)
-        return HttpResponse(form)
 
 
 

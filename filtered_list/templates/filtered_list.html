@@ -1,0 +1,68 @@
+{% extends 'Index.html' %}
+
+{% block title %} Filtered list {% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<h1>Filtered List</h1>
+
+<h2>All Dishes</h2>
+
+    <ul>
+    {%for dish in all_dishes %}
+        <li>{{ dish.dish_name }}</li>
+    {% endfor %}
+    </ul>
+
+
+<h2>Ingredients</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <ul>
+    {%for ingr in all_ingredients %}
+        <li><label><input class="ingr_filter" name="ingr" type="checkbox" value="{{ ingr.id }}">{{ ingr.ingredient_name }}</label></li>
+    {% endfor %}
+    </ul>
+</form>
+
+
+
+
+<div class="wrapper">
+        <div class="image-inner">
+
+            <ul style="background: blue; font-size: 32px">
+
+            </ul>
+
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!--<ul>-->
+            <!--{%for test in test_dish %}-->
+                <!--<li>{{ test.dish_name }}</li>-->
+            <!--{% endfor %}-->
+            <!--</ul>-->
+
+
+
+{% endblock %}
