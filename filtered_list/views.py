@@ -38,7 +38,19 @@ def ajax(request):
                 filter_param = ingr_id_dict[id]
 
                 filtered_dish = filtered_dish.filter(ingredients=filter_param)
+
                 filtered_dish = filtered_dish.values()
+
+                if filtered_dish:
+                    print("Yes")
+                    print(filtered_dish)
+                else:
+                    print("No")
+
+                    filtered_dish = [{
+                        'id': 1, 'dish_name': 'По вашему запросу ничего не найдено',
+                        'dish_type': 'Первые блюда', 'image': 'static/randish/image/borshch.jpeg'
+                    }]
 
 
 

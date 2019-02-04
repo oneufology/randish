@@ -36,11 +36,13 @@ $('#reload_button').on('click', function(e){
 // AJAX FILTER
 $('.ingr_filter').on('click', function(){
     var obj = {};
-    var x
+    var x;
     $.each($("input[name='ingr']:checked"), function(){
         x = $(this).val();
-        console.log(x);
+        console.log("this is: " + x);
         obj[x] = x;
+
+//        console.log(obj)
     });
 
     $.ajax({
@@ -51,18 +53,18 @@ $('.ingr_filter').on('click', function(){
 
         success: function(data){
 
-                $('.wrapper ul').html("");
+            $('.wrapper ul').html("");
 
 //                var h1 = "<h1>" + data.filtered_dish[0].dish_name + "</h1>";
 //                var h4 = "<h4>(" + data.filtered_dish[0].dish_type + ")</h4>";
 //                var image = "url('../../" + data.filtered_dish[0].image + "')";
 
 
-                for(var i = 0; i < data.filtered_dish.length; i++) {
-                var li = "<li>" + data.filtered_dish[i].dish_name + "</li>";
+            for(var i = 0; i < data.filtered_dish.length; i++) {
+            var li = "<li>" + data.filtered_dish[i].dish_name + "</li>";
 
-                    $('.wrapper ul').append(li);
-                 }
+                $('.wrapper ul').append(li);
+             }
 
 
 
@@ -72,10 +74,6 @@ $('.ingr_filter').on('click', function(){
 
 
 
-            }
-
+        }
     });
-
-
-
 });

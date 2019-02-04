@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'randish_models',
     'form',
     'filtered_list',
+    'registration',
 ]
 
 MIDDLEWARE = [

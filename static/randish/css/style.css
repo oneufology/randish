@@ -64,7 +64,7 @@ ul {
     font-size: 98%;
 }
 
-nav a, .logo {
+a, .logo {
   color: #fff;
   text-decoration: none;
 }

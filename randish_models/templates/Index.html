@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <title>{% block title %}Randish{% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'randish/css/style.css'%}">
@@ -11,11 +12,21 @@
 
 </head>
 <body>
+
+
 <header>
-    <a href="../"><h1 class="logo">LOGO</h1></a>
+    <a href="/"><h1 class="logo">LOGO</h1></a>
+
+{% if user.is_authenticated %}
+
+    <h3>Привет {{ user.username }}</h3>
+    <a href="../registration/logout">Выйти</a>
+
+
     <nav>
-        <a href="../add/">add |</a>
-        <a href="../filtered-list/">Show List |</a>
+        <a href="../add/">Добавить |</a>
+        <a href="../filtered-list/">Подобрать блюдо |</a>
+        <a href="../registration/">Регистрация |</a>
     </nav>
 
 </header>
@@ -60,7 +71,10 @@
 </footer>
 
 
-
+{% else %}
+    <a href="../registration/sign_up">Зарегистрироваться </a><br><br>
+    <a href="../registration/sign_in"">Войти</a>
+{% endif %}
 
 <script src="{% static 'randish/js/script.js'%}" ></script>
 
