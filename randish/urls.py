@@ -22,7 +22,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'', include('randish_models.url')),
-    # url(r'^random/', include('randish_models.url')),
     url(r'^add/', include('form.url')),
     url(r'^filtered-list/', include('filtered_list.url')),
     url(r'^registration/', include('registration.url')),

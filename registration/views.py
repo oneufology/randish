@@ -31,8 +31,6 @@ class SignUpFormView(FormView):
         return super(SignUpFormView, self).form_invalid(form)
 
 
-
-
 # Login
 class SignInFormView(FormView):
     form_class = AuthenticationForm

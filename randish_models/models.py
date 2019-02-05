@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -13,9 +14,6 @@ class Ingredients(models.Model):
         ordering = ('ingredient_name', )
         verbose_name = "Ингредиент"
         verbose_name_plural = "Ингредиенты"
-
-
-
 
 
 
@@ -35,6 +33,7 @@ class DishModel(models.Model):
 
     dish_name = models.CharField(max_length=50, verbose_name = "Название") #Name
     dish_type = models.CharField(max_length=50, choices=TYPE_CHOICE, verbose_name = "Тип блюда") #Type
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='static/randish/image', verbose_name = "Картинка")
     ingredients = models.ManyToManyField(Ingredients, verbose_name = "Ингредиенты")
 

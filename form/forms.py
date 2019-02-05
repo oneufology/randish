@@ -10,8 +10,6 @@ class IngredientsForm(ModelForm):
         fields = ['ingredient_name']
 
 
-
-
 class DishModelForm(ModelForm):
     class Meta:
         model = DishModel

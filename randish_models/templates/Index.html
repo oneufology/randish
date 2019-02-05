@@ -4,23 +4,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'favicon.ico' %}">
     <title>{% block title %}Randish{% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'randish/css/style.css'%}">
 
 
 </head>
 <body>
+sdfgdsfsdf
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+             <div class="logo">
+                <a href="/">Logo</a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+
+        </div>
+        <div class="col-sm-2">12
+            <div class="account">
+                {% if user.is_authenticated %}
+                <h3>Привет {{ user.username }}</h3>
+                <p><a href="../registration/logout">Выйти</a></p>
+            </div>
+        </div>
+
+    </div>
 
 
 <header>
-    <a href="/"><h1 class="logo">LOGO</h1></a>
 
-{% if user.is_authenticated %}
 
-    <h3>Привет {{ user.username }}</h3>
-    <a href="../registration/logout">Выйти</a>
+
 
 
     <nav>
@@ -77,6 +96,8 @@
 {% endif %}
 
 <script src="{% static 'randish/js/script.js'%}" ></script>
+
+</div>
 
 </body>
 </html>

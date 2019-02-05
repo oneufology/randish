@@ -13,20 +13,17 @@ class List(TemplateView):
     template_name = 'Index.html'
 
     def get(self, request):
-        all_dishes = DishModel.objects.all()
-        daily_dishes = all_dishes.exclude(dish_type__icontains="Консервирование")
-        daily_dishes = daily_dishes.exclude(dish_type__icontains="Напитки")
+        user_id = request.user.id
+        all_dishes = DishModel.objects.filter(author=user_id)
+        daily_dishes = all_dishes.exclude(dish_type__icontains="Консервирование").exclude(dish_type__icontains="Напитки")
 
         dish_id_list = []
-
 
         for dish in daily_dishes:
             dish_id_list.append(dish.id)
 
         random_dish = random.choice(dish_id_list)
-
         dish_id = DishModel.objects.get(id=random_dish)
-        
         ingr_by_dish = dish_id.ingredients.all()
 
         context = {
@@ -37,16 +34,15 @@ class List(TemplateView):
         return render(request, self.template_name, context)
 
 def reload(request):
-    all_dishes = DishModel.objects.all()
-    daily_dishes = all_dishes.exclude(dish_type__icontains="Консервирование")
-    daily_dishes = daily_dishes.exclude(dish_type__icontains="Напитки")
+    user_id = request.user.id
+    all_dishes = DishModel.objects.filter(author=user_id)
+    daily_dishes = all_dishes.exclude(dish_type__icontains="Консервирование").exclude(dish_type__icontains="Напитки")
 
     dish_id_list = []
     for dish in daily_dishes:
         dish_id_list.append(dish.id)
 
     random_dish = random.choice(dish_id_list)
-
     daily_dishes = daily_dishes.filter(id=random_dish).values()
     ingr_by_dish = DishModel.objects.get(id=random_dish).ingredients.all().values()
 

@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from . import forms
 from django.shortcuts import redirect
 from django.contrib import messages
+from randish_models.models import DishModel
 
 # Create your views here.
 
@@ -20,6 +21,9 @@ def form(request):
     return render(request, 'form.html', context)
 
 def add_ingredients(request):
+
+    print(request.user.id)
+
     form = forms.IngredientsForm(request.POST)
     messages.success(request, 'Ингредиент добавлен')
     if request.method == "POST":
@@ -36,6 +40,7 @@ def add_ingredients(request):
 def add_dish(request):
     messages.success(request, 'Блюдо добавлено')
     form = forms.DishModelForm(request.POST, request.FILES)
+    form.instance.author = request.user
     if request.method == 'POST':
         if form.is_valid():
             form.save()

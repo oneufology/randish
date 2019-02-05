@@ -28,17 +28,12 @@ def ajax(request):
     if request.POST:
         if request.is_ajax():
             ingr_id_dict = request.POST
-
-
-
-            filtered_dish = DishModel.objects.all()
-
+            user_id = request.user.id
+            filtered_dish = DishModel.objects.filter(author=user_id)
 
             for id in ingr_id_dict:
                 filter_param = ingr_id_dict[id]
-
                 filtered_dish = filtered_dish.filter(ingredients=filter_param)
-
                 filtered_dish = filtered_dish.values()
 
                 if filtered_dish:
@@ -52,30 +47,13 @@ def ajax(request):
                         'dish_type': 'Первые блюда', 'image': 'static/randish/image/borshch.jpeg'
                     }]
 
-
-
-
-
-        # filtered_dish = DishModel.objects.filter(ingredients=filter_param).values()
-
         context = {
             'filtered_dish': list(filtered_dish),
         }
 
-
         return JsonResponse(context)
 
     return HttpResponse("Not POST")
-
-
-
-            #
-            # test_dish = DishModel.objects.filter(ingredients=7).filter(ingredients=6).filter(ingredients=10).values()
-            # daily_dishes = DishModel.objects.filter(id=1).values()
-            # ingr_by_dish = DishModel.objects.get(id=random_dish).ingredients.all().values()
-            # context = {
-            #     'daily_dishes': list(daily_dishes),
-            # }
 
 
 
