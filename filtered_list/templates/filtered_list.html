@@ -26,10 +26,11 @@
     {% csrf_token %}
     <ul>
     {%for ingr in all_ingredients %}
-        <li><label><input class="ingr_filter" name="ingr" type="checkbox" value="{{ ingr.id }}">{{ ingr.ingredient_name }}</label></li>
+        <li><label><input class="ingr_filter" name="ingr" type="checkbox" value="{{ ingr.id }}"> {{ ingr.ingredient_name }}</label></li>
     {% endfor %}
     </ul>
 </form>
+
 
 
 

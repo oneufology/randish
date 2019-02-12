@@ -1,31 +1,58 @@
 {% extends 'Index.html' %}
 
-{% block title %} Add {% endblock %}
+{% block title %} Добавить блюдо {% endblock %}
 
 
 {% block content %}
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
-    {% endfor %}
-{% endif %}
 
 
 
-<h3>Add Ingredients</h3>
 
-<form action="add-ingredients/" method="post" enctype="multipart/form-data" id="add-ingr-html-form">{% csrf_token %}
-    {{ form_for_ingredients.as_p }}
-    <input type="submit" value="Submit">
-</form>
 
-<h3>Add Dish</h3>
 
-<form action="add-dish/" method="post" enctype="multipart/form-data">{% csrf_token %}
-    {{ form_for_dish.as_p }}
-    <input type="submit" value="Submit">
-</form>
+
+
+
+
+
+
+<div class="registration margi-bottom">
+	<div class="row">
+		<div class="col-sm-4"></div>
+			<div class="col-sm-4 text-center box">
+
+				{% if messages %}
+				    {% for message in messages %}
+				        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+			    	{% endfor %}
+				{% endif %}
+
+				<form action="add-ingredients/" method="post" enctype="multipart/form-data" id="add-ingr-html-form">{% csrf_token %}
+
+					{{ form_for_ingredients.ingredient_name }}
+
+				    <input class="submit-button" type="submit" value="Добавить">
+				</form>
+
+				<form action="add-dish/" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+					{{ form_for_dish.dish_name }}
+					{{ form_for_dish.dish_type }}
+					{{ form_for_dish.ingredients }}
+					{{ form_for_dish.image }}
+
+
+
+				    <input class="submit-button" type="submit" value="Добавить">
+				</form>
+	
+			</div>
+		<div class="col-sm-4"></div>	
+	</div>
+</div>
+
+
 
 
 

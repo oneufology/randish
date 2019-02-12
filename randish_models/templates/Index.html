@@ -10,94 +10,179 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'randish/css/style.css'%}">
-
-
 </head>
 <body>
-sdfgdsfsdf
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2">
-             <div class="logo">
-                <a href="/">Logo</a>
-            </div>
-        </div>
-        <div class="col-sm-8">
+<!-----------------------------HEADER------------------------------->
+	<header>
+	    <div class="row">
+	        <div class="col-sm-2">
+	             <div class="logo">
+	                <a href="/"><img src="{% static 'randish/image/logo.png'%}"></a>
+	            </div>
+	        </div>
+		<!------------------------------MENU---------------------------------->
+	        <div class="col-sm-8">
+			    <nav class="navbar navbar-expand-lg navbar-light transparent">
+			    	<div class="collapse navbar-collapse text-center">
+			    		<ul class="nav nav-pills">
 
-        </div>
-        <div class="col-sm-2">12
-            <div class="account">
-                {% if user.is_authenticated %}
-                <h3>Привет {{ user.username }}</h3>
-                <p><a href="../registration/logout">Выйти</a></p>
-            </div>
-        </div>
+			    			{% if user.is_authenticated %}
 
-    </div>
+			    			<li class="nav-item">
+			    				<a class="nav-link" href="../add/">добавить</a>
+			    			</li>
+			    			<li class="nav-item">
+			    				<a class="nav-link" href="../filtered-list/">подобрать блюдо</a>
+			    			</li>
+
+		    				{% endif %}
+
+			    			<li class="nav-item">
+			    				<a class="nav-link" href="#/">о проекте</a>
+			    			</li>
+			    		</ul>		        
+			        </div>
+		   		 </nav> 		 
+	        </div>
+		<!----------------------------END MENU--------------------------------->
+
+		<!---------------------------USER ACCOUNT------------------------------>
+	        <div class="col-sm-2">
+	            <div class="account text-right">
+
+	        		<!-- IF USER IS AUTHENTICATED -->
+	                {% if user.is_authenticated %} 
+
+	                <h5>{{ user.username }}</h5>
+
+	                <p><a href="../registration/logout">Выйти</a></p>
+	            </div>
+	        </div>
+		<!-------------------------END USER ACCOUNT------------------------------>
+	    </div>
+	</header>
+<!-----------------------------------END HEADER------------------------------->
 
 
-<header>
 
 
-
-
-
-    <nav>
-        <a href="../add/">Добавить |</a>
-        <a href="../filtered-list/">Подобрать блюдо |</a>
-        <a href="../registration/">Регистрация |</a>
-    </nav>
-
-</header>
-
-
-
-
+<main>
 
 {% block content %}
 
-<div class="wrapper">
-    <div class="image" style="background-image: url(../../{{ dish_id.image }});">
-        <div class="image-inner">
-            <h1>{{ dish_id.dish_name }}</h1>
-            <h4>({{ dish_id.dish_type }})</h4>
-                    <p>Ингредиенты:</p>
-            <ul>
-            {%for ingr in ingr_by_dish %}
-                <li>{{ ingr.ingredient_name }}</li>
-            {% endfor %}
-            </ul>
+<!-------------IF DISH------------->
+{% if dish_id %}
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6 dish-image text-center" style="background-image: url(../../{{ dish_id.image }});">
+	        <!-- <div class="image-inner"> -->
+	            <h1>{{ dish_id.dish_name }}</h1>
+	            <h4>({{ dish_id.dish_type }})</h4>
+	            <p>Ингредиенты:</p>
+	        	<ul>
 
-            <a href="reload" id="reload_button">Случайное блюдо</a>
-        </div>
+	        	{% for ingr in ingr_by_dish %}
+
+	                <li>{{ ingr.ingredient_name }}</li>
+
+	        	{% endfor %}
+
+	            </ul>
+	            <a href="reload" class="button" id="reload_button">Случайное блюдо</a>
+	        <!-- </div> -->
+	    </div>
+	    <div class="col-sm-3"></div>
+	</div>
+
+<!-----------ELSE IF DISH------------->
+{% else %}
+
+    <h1 class="text-center">У вас нет блюд,</h1>
+    <h5 class="text-center">но вы можете <a href="../add/">добавить</a></h5>
 
 
+{% endif %}
+<!-----------END IF DISH------------->
 
-
-    </div>
-</div>
 
 
 
 {% endblock %}
 
+</main>
+<!----------END BLOCK CONTENT--------->
 
 
 
 
-<footer>
-    <h1>Footer</h1>
+
+<!-- ELSE IF USER IS AUTHENTICATED -->
+{% else %}
+			</div>
+		</div>
+	</div>
+	<!-----------------------REGISTRATION----------------->
+	<div class="registration">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4 text-center box">
+				<h2><a href="../registration/sign-in"">Вход</a></h2>
+				<h2><a href="../registration/sign-up">Регистрация</a></h2>	
+			</div>
+			<div class="col-sm-4"></div>	
+		</div>
+    </div>
+<!-----------------------REGISTRATION------------------------->
+{% endif %}
+<!-- END IF USER IS AUTHENTICATED -->
+
+
+
+
+
+
+<!-----------------------------FOOTER----------------------->
+<footer class="font-small fixed-bottom">
+<div class="row no-gutters">
+	<div class="col-md-6">
+	    <div class="footer-copyright text-left py-2">© 2018 Copyright:
+		<a href="#">RanDish.com</a>
+    </div>
+	</div>
+	<div class="col-md-6">
+		<ul class="list-unstyled list-inline text-right">
+      		<li class="list-inline-item">
+        		<a class="btn-floating btn-fb mx-1">
+          		<i class="fab fa-facebook-f">sdf </i>
+        		</a>
+      		</li>
+      		<li class="list-inline-item">
+        		<a class="btn-floating btn-li mx-1">
+          		<i class="fab fa-linkedin-in">sdf </i>
+        		</a>
+      		</li>
+     		 <li class="list-inline-item">
+        		<a class="btn-floating btn-dribbble mx-1">
+          		<i class="fab fa-dribbble">sdf </i>
+        		</a>
+      		</li>
+    	</ul>
+	</div>
+</div>
 </footer>
 
 
-{% else %}
-    <a href="../registration/sign_up">Зарегистрироваться </a><br><br>
-    <a href="../registration/sign_in"">Войти</a>
-{% endif %}
+<!--------------------------END FOOTER----------------------->
 
-<script src="{% static 'randish/js/script.js'%}" ></script>
+
+
+
 
 </div>
+
+
+<script src="{% static 'randish/js/script.js'%}" ></script>
 
 </body>
 </html>

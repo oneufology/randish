@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from . import forms
 from django.shortcuts import redirect
 from django.contrib import messages
-from randish_models.models import DishModel
+from randish_models.models import DishModel, Ingredients
 
 # Create your views here.
 
@@ -21,17 +21,22 @@ def form(request):
     return render(request, 'form.html', context)
 
 def add_ingredients(request):
+    all_ingr_from_db = Ingredients.objects.all()
+    ingr_list = []
 
-    print(request.user.id)
+    for ingr in all_ingr_from_db:
+        ingr_list.append(ingr.ingredient_name)
 
     form = forms.IngredientsForm(request.POST)
-    messages.success(request, 'Ингредиент добавлен')
+
     if request.method == "POST":
         if form.is_valid():
             data = form.cleaned_data
-            form.save()
-            print(data)
-
+            if data['ingredient_name'] not in ingr_list:
+                form.save()
+                messages.success(request, 'Ингредиент добавлен')
+            else:
+                messages.info(request, 'Такой ингредиент уже есть в базе')
             return redirect('../')
 
 

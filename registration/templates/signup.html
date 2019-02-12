@@ -7,21 +7,34 @@
 <form action="" method="post">
     {% csrf_token %}
 
-    {% for field in form %}
 
-    <div class="form-group">
-        <label for="">{{ field.label }}</label>
-        {{ field }}
+    <div class="registration">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center box">
 
-        {% if field.errors %}
-        <p>{{field.errors}}</p>
-        {% endif %}
+                {% for field in form %}
+
+                {{ field }}
+
+                {% if field.errors %}
+
+                <p>{{field.errors}}</p>
+
+                {% endif %}
+
+                {% endfor %}
+
+                <button class="submit-button" type="submit">Создать кабинет</button>
+
+            </div>
+            <div class="col-sm-4"></div>    
+        </div>
     </div>
 
-    {% endfor %}
-
-    <button type="submit">Создать кабинет</button>
-
+</form>
 </form>
 
 {% endblock %}
+
+

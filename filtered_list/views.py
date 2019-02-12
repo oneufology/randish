@@ -7,14 +7,43 @@ import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+from itertools import chain
 
 # Create your views here.
 
 class FilteredList(TemplateView):
     template_name = 'filtered_list.html'
+
     def get(self, request):
-        all_dishes = DishModel.objects.all()
-        all_ingredients = Ingredients.objects.all()
+        user_id = request.user.id
+
+        all_dishes = DishModel.objects.filter(author=user_id)
+        # all_ingredients = Ingredients.objects.all()
+
+        querysets = {}
+        query_list = []
+
+        for dish in all_dishes:
+            querysets[dish.id] = dish.ingredients.all()
+
+        for item in querysets:
+            query_list.append(querysets[item])
+
+        all_ingredients = list(chain(*query_list))
+
+
+        print(all_dishes)
+        print(all_ingredients)
+
+
+
+
+
+
+
+
+
+
 
         ctx = {
             'all_dishes': all_dishes,
@@ -37,8 +66,7 @@ def ajax(request):
                 filtered_dish = filtered_dish.values()
 
                 if filtered_dish:
-                    print("Yes")
-                    print(filtered_dish)
+                    pass
                 else:
                     print("No")
 
@@ -47,14 +75,11 @@ def ajax(request):
                         'dish_type': 'Первые блюда', 'image': 'static/randish/image/borshch.jpeg'
                     }]
 
-        context = {
-            'filtered_dish': list(filtered_dish),
-        }
+            context = {
+                'filtered_dish': list(filtered_dish),
+            }
 
         return JsonResponse(context)
 
     return HttpResponse("Not POST")
-
-
-
 

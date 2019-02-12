@@ -20,7 +20,7 @@ class MainView(TemplateView):
 # Registration
 class SignUpFormView(FormView):
     form_class = UserCreationForm
-    success_url = "/registration/sign_in/"
+    success_url = "/registration/sign-in/"
     template_name = "signup.html"
 
     def form_valid(self, form):
@@ -48,7 +48,7 @@ class SignInFormView(FormView):
 class LogOutView(View):
     def get(self, request):
         logout(request)
-        return HttpResponseRedirect("/registration/")
+        return HttpResponseRedirect("/")
 
 
 
