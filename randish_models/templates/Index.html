@@ -36,12 +36,12 @@
 			    			<li class="nav-item">
 			    				<a class="nav-link" href="../filtered-list/">подобрать блюдо</a>
 			    			</li>
-
-		    				{% endif %}
-
 			    			<li class="nav-item">
-			    				<a class="nav-link" href="#/">о проекте</a>
+			    				<a class="nav-link" href="../about/">о проекте</a>
 			    			</li>
+
+							{% endif %}
+
 			    		</ul>		        
 			        </div>
 		   		 </nav> 		 
@@ -50,12 +50,13 @@
 
 		<!---------------------------USER ACCOUNT------------------------------>
 	        <div class="col-sm-2">
-	            <div class="account text-right">
 
-	        		<!-- IF USER IS AUTHENTICATED -->
-	                {% if user.is_authenticated %} 
+	        	<!-- IF USER IS AUTHENTICATED -->
+	            {% if user.is_authenticated %} 
+	            
+	            <div class="account text-center">
 
-	                <h5>{{ user.username }}</h5>
+	        		<h5>{{ user.username }}</h5>
 
 	                <p><a href="../registration/logout">Выйти</a></p>
 	            </div>
@@ -64,9 +65,6 @@
 	    </div>
 	</header>
 <!-----------------------------------END HEADER------------------------------->
-
-
-
 
 <main>
 
@@ -106,17 +104,10 @@
 {% endif %}
 <!-----------END IF DISH------------->
 
-
-
-
 {% endblock %}
 
 </main>
 <!----------END BLOCK CONTENT--------->
-
-
-
-
 
 <!-- ELSE IF USER IS AUTHENTICATED -->
 {% else %}
@@ -137,11 +128,6 @@
 <!-----------------------REGISTRATION------------------------->
 {% endif %}
 <!-- END IF USER IS AUTHENTICATED -->
-
-
-
-
-
 
 <!-----------------------------FOOTER----------------------->
 <footer class="font-small fixed-bottom">
@@ -168,11 +154,7 @@
 </div>
 </footer>
 
-
 <!--------------------------END FOOTER----------------------->
-
-
-
 
 
 </div>

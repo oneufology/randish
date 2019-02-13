@@ -3,10 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from randish_models.models import Ingredients, DishModel
-import json
-import requests
 from django.views.decorators.csrf import csrf_exempt
-from django.db.models import Q
 from itertools import chain
 
 # Create your views here.
@@ -18,7 +15,6 @@ class FilteredList(TemplateView):
         user_id = request.user.id
 
         all_dishes = DishModel.objects.filter(author=user_id)
-        # all_ingredients = Ingredients.objects.all()
 
         querysets = {}
         query_list = []
@@ -31,19 +27,7 @@ class FilteredList(TemplateView):
 
         all_ingredients = list(chain(*query_list))
 
-
-        print(all_dishes)
-        print(all_ingredients)
-
-
-
-
-
-
-
-
-
-
+        all_ingredients = (set(all_ingredients))
 
         ctx = {
             'all_dishes': all_dishes,
@@ -68,11 +52,9 @@ def ajax(request):
                 if filtered_dish:
                     pass
                 else:
-                    print("No")
-
                     filtered_dish = [{
                         'id': 1, 'dish_name': 'По вашему запросу ничего не найдено',
-                        'dish_type': 'Первые блюда', 'image': 'static/randish/image/borshch.jpeg'
+                        'dish_type': 'Первые блюда', 'image': 'static/randish/image/nothing.png'
                     }]
 
             context = {

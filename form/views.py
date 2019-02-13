@@ -40,8 +40,6 @@ def add_ingredients(request):
             return redirect('../')
 
 
-
-
 def add_dish(request):
     messages.success(request, 'Блюдо добавлено')
     form = forms.DishModelForm(request.POST, request.FILES)

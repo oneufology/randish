@@ -5,7 +5,6 @@ from .models import DishModel
 from .models import Ingredients
 import random
 from django.http import JsonResponse
-# from . import forms
 
 # Create your views here.
 
@@ -21,7 +20,6 @@ class List(TemplateView):
             if all_dishes:
 
                 daily_dishes = all_dishes.exclude(dish_type__icontains="Консервирование").exclude(dish_type__icontains="Напитки")
-
                 dish_id_list = []
 
                 for dish in daily_dishes:
@@ -38,10 +36,6 @@ class List(TemplateView):
 
             else:
                 context = {}
-
-                print("YES")
-                print(context)
-
 
         return render(request, self.template_name, context)
 

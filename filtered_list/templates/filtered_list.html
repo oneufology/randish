@@ -10,32 +10,27 @@
 <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-        <div class="row">
-            <div class="col-sm-10">
+        <div class="row mt-100">
+            <div class="col-sm-9">
                 <div class="wrapper">
-                        <ul>
-                            {%for dish in all_dishes %}
-
-                            <li>
-                                <div class="row filter-list-item">
-                                    <div class="col-sm-4">
-                                        <img class="img-fluid" src="/{{dish.image}}">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h2>{{ dish.dish_name }}</h2>
-                                    </div>
+                    <ul>
+                        {%for dish in all_dishes %}
+                        <li>
+                            <div class="row filter-list-item">
+                                <div class="col-sm-4 text-center">
+                                    <img class="img-fluid" src="/{{dish.image}}">
                                 </div>
-
-                            </li>
-
-                            {% endfor %}
-
-                        </ul>
+                                <div class="col-sm-8">
+                                    <h2>{{ dish.dish_name }}</h2>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                
             </div>
-            <div class="col-sm-2">
-                <h3>Выберите ингредиенты</h3>
+            <div class="col-sm-3 filter">
+                <h4>Выберите ингредиенты</h4>
                 <form action="" method="post">
                 {% csrf_token %}
                     <ul>
@@ -43,8 +38,9 @@
                     {%for ingr in all_ingredients %}
 
                     <li>
-                        <label>
-                        <input class="ingr_filter" name="ingr" type="checkbox" value="{{ ingr.id }}"> {{ ingr.ingredient_name }}
+                        <input class="ingr_filter" id="{{ ingr.id }}" name="ingr" type="checkbox" value="{{ ingr.id }}"> 
+                        <label for="{{ ingr.id }}">
+                            {{ ingr.ingredient_name }}
                         </label>
                     </li>
 

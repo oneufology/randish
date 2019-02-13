@@ -25,7 +25,7 @@ SECRET_KEY = 'yne5k!3p6mfh@ymrrdu18^b+)$i@643rjg1+b9=fswze87aje-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['oneufology.pythonanywhere.com']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'form',
     'filtered_list',
     'registration',
+    'about',
 ]
 
 MIDDLEWARE = [
