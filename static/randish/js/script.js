@@ -75,13 +75,13 @@ $('.ingr_filter').on('click', function(){
                     $('.wrapper ul').append(li);
                 }
 
-//             for(var i = 0; i < data.filtered_dish.length; i++)
-
-//            var test = data.filtered_dish;
-//            console.log(test)
-
-
-
         }
+
     });
+
 });
+
+
+$(".navbar-toggler").click(function(){
+    $(".navbar-collapse").toggleClass("show");
+  });
