@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <title>{% block title %}TT Cup{% endblock %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'randish/css/style.css'%}">
+</head>
+<body>
+
+<div class="container-fluid">
+
+<header class="text-center pb-5">
+    <a href="/tt-cup/"><h1>TT Cup</h1></a>
+</header>
+
+<main>
+
+    <form action="./push/" method="post">
+        {% csrf_token %}
+
+        <div class="row pb-5">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+                <ul>
+                    <li><input type="radio" name="rate" value="20"> 20</li>
+                    <li><input type="radio" name="rate" value="30"> 30</li>
+                    <li><input type="radio" name="rate" value="40"> 40</li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <ul>
+                    <li><input type="radio" name="rate" value="50"> 50</li>
+                    <li><input type="radio" name="rate" value="60"> 60</li>
+                    <li><input type="radio" name="rate" value="70"> 70</li>
+                    <li><input type="radio" name="rate" value="100"> 100</li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <ul>
+                    <li><input type="radio" name="rate" value="30n"> 30n</li>
+                    <li><input type="radio" name="rate" value="40n"> 40n</li>
+                    <li><input type="radio" name="rate" value="50n"> 50n</li>
+                </ul>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-5 pr-1">
+                <input class="form-control" type="text" name="player_id">
+            </div>
+            <div class="col-sm-1 pl-1">
+                <button class="btn btn-success" type="submit" id="tt_cup_button">PUSH</button>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+    </form>
+
+
+<h5>{{ name }}</h5>
+
+{% for item in report %}
+
+<h5>{{ item }}</h5>
+
+{% endfor %}
+
+</main>
+
+</div>
+
+
+
+
+<script src="{% static 'randish/js/script.js'%}" ></script>
+</body>
+</html>

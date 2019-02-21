@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 // PLACEHOLDER
 
 $('#id_username').attr("placeholder", "Имя пользователя");
@@ -43,7 +44,6 @@ $('#reload_button').on('click', function(e){
             }
         })
     });
-})
 
 
 // AJAX FILTER
@@ -84,4 +84,15 @@ $('.ingr_filter').on('click', function(){
 
 $(".navbar-toggler").click(function(){
     $(".navbar-collapse").toggleClass("show");
-  });
+});
+
+
+// TT CUP
+//$("#tt_cup_button").click(function(e){
+//    console.log("PUSH");
+//    e.preventDefault();
+//});
+
+
+
+})

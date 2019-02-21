@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'filtered_list',
     'registration',
     'about',
+    'ttcup',
 ]
 
 MIDDLEWARE = [

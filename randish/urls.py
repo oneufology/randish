@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^filtered-list/', include('filtered_list.url')),
     url(r'^registration/', include('registration.url')),
     url(r'^about/', include('about.url')),
+    url(r'^tt-cup/', include('ttcup.url')),
 ]
