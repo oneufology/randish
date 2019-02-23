@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'registration',
     'about',
     'ttcup',
+    'dudenko',
 ]
 
 MIDDLEWARE = [
