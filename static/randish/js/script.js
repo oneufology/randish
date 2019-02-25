@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 // PLACEHOLDER
 
 $('#id_username').attr("placeholder", "Имя пользователя");
@@ -43,7 +44,6 @@ $('#reload_button').on('click', function(e){
             }
         })
     });
-})
 
 
 // AJAX FILTER
@@ -84,4 +84,65 @@ $('.ingr_filter').on('click', function(){
 
 $(".navbar-toggler").click(function(){
     $(".navbar-collapse").toggleClass("show");
-  });
+});
+
+
+// TT CUP AJAX
+$('#tt_cup_button').on('click', function(e){
+    e.preventDefault();
+
+    var rate = $("input[name='rate']:checked").val();
+    var url = $("input[name='player_id']").val();
+    var ttCupObj = {"rate": rate, "url": url};
+
+
+    $.ajax({
+        method: 'POST',
+        url: "push/",
+        data: ttCupObj,
+        dataType: 'json',
+
+        success: function(data){
+
+            $('.tt-cup-result .player-name').html("");
+            $('.tt-cup-result ul').html("");
+
+            var name = "<h5>" + data.name + "</h5>";
+
+            $('.tt-cup-result .player-name').append(name);
+
+            console.log(data.report)
+
+
+
+
+            for(var i = 0; i < data.report.length; i++) {
+                var li = "<li>" + data.report[i]  + "</li>";
+
+                $('.tt-cup-result ul').append(li);
+
+            }
+
+//            $('.wrapper ul').html("");
+//
+//            for(var i = 0; i < data.filtered_dish.length; i++) {
+//                var li = "<li><div" + " " + "class='row" + " " + "filter-list-item'><div" + " " + "class='col-sm-4'><img" +
+//                " " + "class='img-fluid'" + "src='/" + data.filtered_dish[i].image +"'></div><div" + " " +
+//                "class='col-sm-8'><h2>" + data.filtered_dish[i].dish_name + "</h2></div></div></li>"
+//
+//                    $('.wrapper ul').append(li);
+//                }
+
+        }
+
+    });
+
+    });
+
+
+
+
+
+
+
+});

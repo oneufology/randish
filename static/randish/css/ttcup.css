@@ -1,0 +1,21 @@
+body {
+    background: url(../image/tt_cup_bg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #dadada;
+}
+
+a, li {
+    color: #dadada;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul.list-group li:nth-child(odd) {
+  background: #dadada;
+  color: #2a353b;
+}
+
