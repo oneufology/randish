@@ -276,6 +276,14 @@ select#id_ingredients {
     text-align: center;
 }
 
+.about .box p {
+    padding: 0 10px;
+}
+
+.logo {
+    text-align: center;
+}
+
 
 
 
