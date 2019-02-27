@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^registration/', include('registration.url')),
     url(r'^about/', include('about.url')),
     url(r'^tt-cup/', include('ttcup.url')),
+    url(r'^tic-tac-toe/', include('tic_tac_toe.url')),
 ]

@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="{% static 'randish/css/toe.css'%}">
+
+</head>
+<body>
+	<main>
+	 <table class="center">
+	    <tr>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="top-1" value="top-1">
+	        <label for="top-1"></label>
+	      </td>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="top-2" value="top-2">
+	        <label for="top-2"></label>
+	      </td>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="top-3" value="top-3">
+	        <label for="top-3"></label>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="mid-1" value="mid-1">
+	        <label for="mid-1"></label>
+	      </td>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="mid-2" value="mid-2">
+	        <label for="mid-2"></label>
+	      </td>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="mid-3" value="mid-3">
+	        <label for="mid-3"></label>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="bot-1" value="bot-1">
+	        <label for="bot-1"></label>
+	      </td>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="bot-2" value="bot-2">
+	        <label for="bot-2"></label>
+	      </td>
+	      <td>
+	        <input type="checkbox" class="cell" name="cell" id="bot-3" value="bot-3">
+	        <label for="bot-3"></label>
+	      </td>
+	    </tr>
+	  </table>
+  	</main>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'randish/js/toe.js'%}" ></script>
+</body>
+</html>
