@@ -33,6 +33,8 @@ def toe_ajax(request):
 
             data = request.POST
 
+            zero = '#mid-2'
+
             for item in data:
                 cross = data[item]
 
@@ -51,6 +53,7 @@ def toe_ajax(request):
                     dict['left_col'] +=1
                     dict['mid_row'] +=1
                 elif cross == 'mid-2':
+                   zero = rand_cell
                    dict['mid_row'] +=1
                    dict['center_col'] +=1
                    dict['left_to_right_diag'] +=1
@@ -72,21 +75,18 @@ def toe_ajax(request):
 
 
 
+
             part_of_field = ''
 
             for key, val in dict.items():
                 if val == 2:
                     print(key)
-
-
-            # if 'mid-2' in cross_list:
-            #     zero = rand_cell
-            # else:
-            #     zero = '#mid-2'
+                    if key == 'left_col':
+                        zero = '#top-1'
 
 
 
-            zero = "top-1"
+
 
 
 
