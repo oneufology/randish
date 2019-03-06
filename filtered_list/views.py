@@ -54,7 +54,7 @@ def ajax(request):
                 else:
                     filtered_dish = [{
                         'id': 1, 'dish_name': 'По вашему запросу ничего не найдено',
-                        'dish_type': 'Первые блюда', 'image': 'static/randish/image/nothing.png'
+                        'dish_type': 'Первые блюда', 'image': 'img/nothing.png'
                     }]
 
             context = {

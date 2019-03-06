@@ -69,7 +69,7 @@ $('.ingr_filter').on('click', function(){
 
             for(var i = 0; i < data.filtered_dish.length; i++) {
                 var li = "<li><div" + " " + "class='row" + " " + "filter-list-item'><div" + " " + "class='col-sm-4'><img" +
-                " " + "class='img-fluid'" + "src='/" + data.filtered_dish[i].image +"'></div><div" + " " +
+                " " + "class='img-fluid'" + "src='/media/" + data.filtered_dish[i].image +"'></div><div" + " " +
                 "class='col-sm-8'><h2>" + data.filtered_dish[i].dish_name + "</h2></div></div></li>"
 
                     $('.wrapper ul').append(li);
