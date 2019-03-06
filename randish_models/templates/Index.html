@@ -87,7 +87,7 @@
 {% if dish_id %}
 	<div class="row">
 		<div class="col-sm-3"></div>
-		<div class="col-sm-6 dish-image text-center" style="background-image: url({{ dish_id.image }});">
+		<div class="col-sm-6 dish-image text-center" style="background-image: url(/media/{{ dish_id.image }});">
 		<!--<div class="col-sm-6 dish-image text-center" style="background-image: url({{ MEDIA_URL }}test.png);">-->
 	        <!-- <div class="image-inner"> -->
 	            <h1>{{ dish_id.dish_name }}</h1>

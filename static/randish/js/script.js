@@ -29,7 +29,7 @@ $('#reload_button').on('click', function(e){
 
                 var h1 = "<h1>" + data.daily_dishes[0].dish_name + "</h1>";
                 var h4 = "<h4>(" + data.daily_dishes[0].dish_type + ")</h4>";
-                var image = "url('../../" + data.daily_dishes[0].image + "')";
+                var image = "url('/media/" + data.daily_dishes[0].image + "')";
 
                  for(var i = 0; i < data.ingr_by_dish.length; i++) {
                     var li = "<li>" + data.ingr_by_dish[i].ingredient_name + "</li>";
