@@ -29,3 +29,5 @@ urlpatterns = [
     url(r'^tt-cup/', include('ttcup.url')),
     url(r'^tic-tac-toe/', include('tic_tac_toe.url')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
